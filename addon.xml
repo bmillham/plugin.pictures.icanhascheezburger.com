@@ -1,0 +1,24 @@
+<!--
+    Document   : addon.xml
+    Created on : August 18, 2010, 9:49 PM
+    Author     : brian
+    Description:
+        Purpose of the document follows.
+-->
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.pictures.icanhascheezburger.com" name="ICanHasCheezburger.com" version="0.1" provider-name="bmillham">
+    <requires>
+        <import addon="xbmc.python" version="1.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="addon.py">
+        <provides>pictures</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <minversion>31632</minversion>
+        <summary>View random LOL cats from ICanHasCheezburger.com.</summary>
+        <description>View ramdom LOL cats (and others) from ICanHasCheezburger.com.</description>
+        <disclaimer>ICanHasCheezburger.com has not endorsed this addon.</disclaimer>
+        <supportedcontent>episodes</supportedcontent>
+    </extension>
+</addon>
