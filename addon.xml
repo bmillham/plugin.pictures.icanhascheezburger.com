@@ -9,8 +9,8 @@
     <extension point="xbmc.addon.metadata">
         <platform>all</platform>
         <minversion>31632</minversion>
-        <summary>View random LOL cats from ICanHasCheezburger.com.</summary>
-        <description>View ramdom LOL cats (and others) from ICanHasCheezburger.com.</description>
+        <summary>View random LOLs from ICanHasCheezburger.com.</summary>
+        <description>View random LOL Cats (and others) from ICanHasCheezburger.com.</description>
         <disclaimer>ICanHasCheezburger.com has not endorsed this addon. It is recommended that you do not allow your kittehs in the room while using this addon.</disclaimer>
         <supportedcontent>episodes</supportedcontent>
     </extension>

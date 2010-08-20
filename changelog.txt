@@ -1,0 +1,3 @@
+ICanHasCheezburger.com Add-On For XBMC Changelog
+
+Version 0.1: Initial version ported from the original plugin.
