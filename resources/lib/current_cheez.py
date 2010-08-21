@@ -71,7 +71,12 @@ class Main:
         #next_page_url = "%s?action=list&lol_name=%s&lol_url=%s" % ( sys.argv[0], urllib.quote_plus( self.lol_name), urllib.quote_plus( self.lol_url ) )
         #next_page_url = self.lol_url
         #xbmcplugin.addDirectoryItem( handle = int(sys.argv[1]), url = next_page_url, listitem = listitem, isFolder = True)
-
+        if __settings__.getSetting("home_page") == "1":
+            # The default start page is this page, so add a Home Page item
+            next_button_text = __language__(30211)
+            listitem = xbmcgui.ListItem(next_button_text, iconImage = "DefaultFolder.png", thumbnailImage="DefaultFolder.png")
+            url = "%s?action=forcemain" % sys.argv[0]
+            xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]), url=url, listitem=listitem, isFolder=True)
         #
         # Disable sorting...
         #

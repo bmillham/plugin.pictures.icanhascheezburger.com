@@ -15,6 +15,7 @@
 __plugin__  = "ICanHasCheezburger.com"
 __author__  = "Brian Millham <brian@millham.net>"
 __url__     = "http://github.com/bmillham/plugin.pictures.icanhascheezburger.com"
+__website__ = "http://github.com/bmillham/plugin.pictures.icanhascheezburger.com"
 __date__    = "20 August 2010"
 __version__ = "0.3"
 
@@ -35,10 +36,10 @@ __language__ = __settings__.getLocalizedString
 if ( "action=list" in sys.argv[ 2 ] ):
     import random_cheez_list as plugin
     plugin.Main()
-elif ("action=30405" in sys.argv[2]):
+elif ("action=30405" in sys.argv[2] or (__settings__.getSetting("home_page") == "1" and "action=" not in sys.argv[2])):
     import current_cheez as plugin
     plugin.Main()
-elif ("action=30406" in sys.argv[2]):
+elif ("action=30406" in sys.argv[2] or (__settings__.getSetting("home_page") == "2" and "action=" not in sys.argv[2])):
     import random_cheez_selection as plugin
     plugin.Main()
 else:
