@@ -10,6 +10,7 @@ import xbmc
 import xbmcgui
 import xbmcplugin
 import feedparser
+import urllib
 from BeautifulSoup    import BeautifulStoneSoup
 import xbmcaddon
 
@@ -24,27 +25,16 @@ class Main:
         # Constants
         self.DEBUG            = False
         self.IMAGES_PATH      = xbmc.translatePath( os.path.join( os.getcwd(), 'resources', 'images' ) )
-
-        self.entries_per_page = 5
-
-        if __settings__.getSetting ("entries_per_page") == "0" :
-            self.entries_per_page = 5
-        elif __settings__.getSetting ("entries_per_page") == "1" :
-            self.entries_per_page = 10
-        elif __settings__.getSetting ("entries_per_page") == "2" :
-            self.entries_per_page = 20
-
+        params = dict(part.split('=') for part in sys.argv[ 2 ][ 1: ].split('&'))
+        self.lol_name       = urllib.unquote_plus( params[ "lol_name" ] )
+        self.lol_url        = urllib.unquote_plus( params[ "lol_url" ] )
         self.get_current_lols()
 
     def get_current_lols( self ) :
         #
         # Get HTML page...
         #
-        self.lol_name = "LOL"
-        self.current_page = 1
-        self.lol_url = "URL"
-        url_base = "http://feeds.feedburner.com/ICanHasCheezburger"
-        feed = feedparser.parse(url_base)
+        feed = feedparser.parse(self.lol_url)
         for entry in feed.entries:
             title       = entry.title
             if "VIDEO:" in title: continue
@@ -85,7 +75,7 @@ class Main:
         #
         # Label (top-right)...
         #
-        trlabel = "%s (%s)" % ( self.lol_name, (__language__(30402) % self.current_page))
+        trlabel = "%s" % self.lol_name
         xbmcplugin.setPluginCategory( handle=int( sys.argv[ 1 ] ), category=( trlabel ) )
 
         #

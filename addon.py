@@ -34,10 +34,14 @@ __settings__ = xbmcaddon.Addon(id='plugin.pictures.icanhascheezburger.com')
 __language__ = __settings__.getLocalizedString
 
 if ( "action=list" in sys.argv[ 2 ] ):
-    import random_cheez_list as plugin
+    if ("lol_type=current" in sys.argv[2]):
+        import current_cheez_list as plugin
+    else:
+        import random_cheez_list as plugin
     plugin.Main()
 elif ("action=30405" in sys.argv[2] or (__settings__.getSetting("home_page") == "1" and "action=" not in sys.argv[2])):
-    import current_cheez as plugin
+    #import current_cheez as plugin
+    import current_cheez_selection as plugin
     plugin.Main()
 elif ("action=30406" in sys.argv[2] or (__settings__.getSetting("home_page") == "2" and "action=" not in sys.argv[2])):
     import random_cheez_selection as plugin
