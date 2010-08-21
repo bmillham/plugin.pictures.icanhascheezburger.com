@@ -3,7 +3,7 @@
 #
 # based on Comics.com - XBMC picture plugin by Dan Dar3
 #
-# Coding by Brian Millham
+# Coding by Brian Millham <brian@millham.net>
 #
 # Credits:
 #   * Team XBMC @ XBMC.org                                                [http://xbmc.org/]
@@ -16,7 +16,7 @@ __plugin__  = "ICanHasCheezburger.com"
 __author__  = "Brian Millham <brian@millham.net>"
 __url__     = "http://github.com/bmillham/plugin.pictures.icanhascheezburger.com"
 __date__    = "20 August 2010"
-__version__ = "0.2"
+__version__ = "0.3"
 
 #
 # Imports
