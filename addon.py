@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# ICanHasCheezBurger = XBMC Plugin
+# ICanHasCheezBurger = XBMC Addon
 #
 # based on Comics.com - XBMC picture plugin by Dan Dar3
 #
@@ -30,16 +30,25 @@ import sys
 LIB_DIR = xbmc.translatePath( os.path.join( os.getcwd(), 'resources', 'lib' ) )
 sys.path.append (LIB_DIR)
 
+import xbmcaddon
+
+__settings__ = xbmcaddon.Addon(id='plugin.pictures.icanhascheezburger.com')
+
+__language__ = __settings__.getLocalizedString
 #
 # Comic strip (list)...
 #
 if ( "action=list" in sys.argv[ 2 ] ):
-    import xbmcplugin_list as plugin
+    import random_cheez_list as plugin
+    plugin.Main()
+elif ("action=30406" in sys.argv[2]):
+    import random_cheez_selection as plugin
     plugin.Main()
 #
 # Main...
 #
 else :
     xbmc.log( "[PLUGIN] %s v%s (%s)" % ( __plugin__, __version__, __date__ ), xbmc.LOGNOTICE )
-    import xbmcplugin_main as plugin
+    #import xbmcplugin_main as plugin
+    import cheezburger_type_selection as plugin
     plugin.Main()

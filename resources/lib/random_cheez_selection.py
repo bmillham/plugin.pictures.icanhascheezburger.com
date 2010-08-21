@@ -14,7 +14,6 @@ import urllib
 import xbmcaddon
 
 __settings__ = xbmcaddon.Addon(id='plugin.pictures.icanhascheezburger.com')
-
 __language__ = __settings__.getLocalizedString
 
 #
