@@ -4,7 +4,6 @@ __date__ ="$Aug 20, 2010 11:11:39 PM$"
 # Show current LOLs. For now, only Cats are supported. Others will follow.
 
 import os
-import re
 import sys
 import xbmc
 import xbmcgui
@@ -21,20 +20,23 @@ class Main:
     #
     # Init
     #
-    def __init__( self ) :
+    def __init__(self, url) :
         # Constants
         self.DEBUG            = False
         self.IMAGES_PATH      = xbmc.translatePath( os.path.join( os.getcwd(), 'resources', 'images' ) )
-        params = dict(part.split('=') for part in sys.argv[ 2 ][ 1: ].split('&'))
-        self.lol_name       = urllib.unquote_plus( params[ "lol_name" ] )
-        self.lol_url        = urllib.unquote_plus( params[ "lol_url" ] )
+        #params = dict(part.split('=') for part in sys.argv[ 2 ][ 1: ].split('&'))
+        #self.lol_name       = urllib.unquote_plus( params[ "lol_name" ] )
+        #self.lol_url        = urllib.unquote_plus( params[ "lol_url" ] )
+        self.url = url
+        xbmc.log('URL: %s' % self.url)
         self.get_current_lols()
 
+        
     def get_current_lols( self ) :
         #
         # Get HTML page...
         #
-        feed = feedparser.parse(self.lol_url)
+        feed = feedparser.parse(self.url)
         for entry in feed.entries:
             title       = entry.title
             if "VIDEO:" in title: continue
@@ -75,8 +77,8 @@ class Main:
         #
         # Label (top-right)...
         #
-        trlabel = "%s" % self.lol_name
-        xbmcplugin.setPluginCategory( handle=int( sys.argv[ 1 ] ), category=( trlabel ) )
+        #trlabel = "%s" % self.lol_name
+        #xbmcplugin.setPluginCategory( handle=int( sys.argv[ 1 ] ), category=( trlabel ) )
 
         #
         # End of directory...
