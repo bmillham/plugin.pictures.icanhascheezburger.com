@@ -16,7 +16,7 @@ __plugin__  = "ICanHasCheezburger.com"
 __author__  = "Brian Millham <brian@millham.net>"
 __url__     = "http://github.com/bmillham/plugin.pictures.icanhascheezburger.com"
 __date__    = "20 August 2010"
-__version__ = "0.3"
+__version__ = "0.4"
 
 #
 # Imports
