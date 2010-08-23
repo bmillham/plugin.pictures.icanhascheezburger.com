@@ -17,7 +17,7 @@ __author__  = "Brian Millham <brian@millham.net>"
 __url__     = "http://github.com/bmillham/plugin.pictures.icanhascheezburger.com"
 __website__ = "http://github.com/bmillham/plugin.pictures.icanhascheezburger.com"
 __date__    = "20 August 2010"
-__version__ = "0.3"
+__version__ = "0.4"
 
 #
 # Imports
@@ -31,7 +31,7 @@ sys.path.append (LIB_DIR)
 import xbmcaddon
 import addonhelper
 
-__settings__ = xbmcaddon.Addon(id='plugin.pictures.icanhascheezburger.com')
+__settings__ = xbmcaddon.Addon(id='plugin.image.icanhascheezburger.com')
 __language__ = __settings__.getLocalizedString
 
 ahelper = addonhelper.AddonHelper()
