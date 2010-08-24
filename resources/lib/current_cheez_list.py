@@ -4,12 +4,12 @@ __date__ ="$Aug 20, 2010 11:11:39 PM$"
 # Show current LOLs. For now, only Cats are supported. Others will follow.
 
 import os
-import re
 import sys
 import xbmc
 import xbmcgui
 import xbmcplugin
 import feedparser
+import urllib
 from BeautifulSoup    import BeautifulStoneSoup
 import xbmcaddon
 
@@ -20,31 +20,23 @@ class Main:
     #
     # Init
     #
-    def __init__( self ) :
+    def __init__(self, url) :
         # Constants
         self.DEBUG            = False
         self.IMAGES_PATH      = xbmc.translatePath( os.path.join( os.getcwd(), 'resources', 'images' ) )
-
-        self.entries_per_page = 5
-
-        if __settings__.getSetting ("entries_per_page") == "0" :
-            self.entries_per_page = 5
-        elif __settings__.getSetting ("entries_per_page") == "1" :
-            self.entries_per_page = 10
-        elif __settings__.getSetting ("entries_per_page") == "2" :
-            self.entries_per_page = 20
-
+        #params = dict(part.split('=') for part in sys.argv[ 2 ][ 1: ].split('&'))
+        #self.lol_name       = urllib.unquote_plus( params[ "lol_name" ] )
+        #self.lol_url        = urllib.unquote_plus( params[ "lol_url" ] )
+        self.url = url
+        xbmc.log('URL: %s' % self.url)
         self.get_current_lols()
 
+        
     def get_current_lols( self ) :
         #
         # Get HTML page...
         #
-        self.lol_name = "LOL"
-        self.current_page = 1
-        self.lol_url = "URL"
-        url_base = "http://feeds.feedburner.com/ICanHasCheezburger"
-        feed = feedparser.parse(url_base)
+        feed = feedparser.parse(self.url)
         for entry in feed.entries:
             title       = entry.title
             if "VIDEO:" in title: continue
@@ -71,7 +63,12 @@ class Main:
         #next_page_url = "%s?action=list&lol_name=%s&lol_url=%s" % ( sys.argv[0], urllib.quote_plus( self.lol_name), urllib.quote_plus( self.lol_url ) )
         #next_page_url = self.lol_url
         #xbmcplugin.addDirectoryItem( handle = int(sys.argv[1]), url = next_page_url, listitem = listitem, isFolder = True)
-
+        if __settings__.getSetting("home_page") == "1":
+            # The default start page is this page, so add a Home Page item
+            next_button_text = __language__(30211)
+            listitem = xbmcgui.ListItem(next_button_text, iconImage = "DefaultFolder.png", thumbnailImage="DefaultFolder.png")
+            url = "%s?action=forcemain" % sys.argv[0]
+            xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]), url=url, listitem=listitem, isFolder=True)
         #
         # Disable sorting...
         #
@@ -80,8 +77,8 @@ class Main:
         #
         # Label (top-right)...
         #
-        trlabel = "%s (%s)" % ( self.lol_name, (__language__(30402) % self.current_page))
-        xbmcplugin.setPluginCategory( handle=int( sys.argv[ 1 ] ), category=( trlabel ) )
+        #trlabel = "%s" % self.lol_name
+        #xbmcplugin.setPluginCategory( handle=int( sys.argv[ 1 ] ), category=( trlabel ) )
 
         #
         # End of directory...
