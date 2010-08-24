@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
-    <setting id="version"          type="text" label="30100" default="1.0"                         enable="false" />
     <setting id="author"           type="text" label="30101" default="Brian Millham"                    enable="false" />
     <setting id="website"          type="text" label="30102" default="" enable="false" />    
     <setting type="sep" />

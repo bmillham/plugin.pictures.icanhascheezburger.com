@@ -12,11 +12,6 @@
 # 
 # Constants
 #
-__plugin__  = "ICanHasCheezburger.com"
-__author__  = "Brian Millham <brian@millham.net>"
-__url__     = "http://github.com/bmillham/plugin.pictures.icanhascheezburger.com"
-__date__    = "20 August 2010"
-__version__ = "0.4"
 
 #
 # Imports
@@ -42,6 +37,6 @@ elif ("action=30406" in sys.argv[2]):
     import random_cheez_selection as plugin
     plugin.Main()
 else:
-    xbmc.log( "[PLUGIN] %s v%s (%s)" % ( __plugin__, __version__, __date__ ), xbmc.LOGNOTICE )
+    #xbmc.log( "[PLUGIN] %s v%s (%s)" % ( __plugin__, __version__, __date__ ), xbmc.LOGNOTICE )
     import cheezburger_type_selection as plugin
     plugin.Main()
