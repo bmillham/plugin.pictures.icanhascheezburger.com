@@ -9,18 +9,7 @@
 #   * Team XBMC @ XBMC.org                                                [http://xbmc.org/]
 #   * Leonard Richardson <leonardr@segfault.org>  - BeautifulSoup 3.0.7a  [http://www.crummy.com/software/BeautifulSoup/]
 #   * Eric Lawrence      <e_lawrence@hotmail.com> - Fiddler Web Debugger  [http://www.fiddler2.com]
-# 
-# Constants
-#
-__plugin__  = "ICanHasCheezburger.com"
-__author__  = "Brian Millham <brian@millham.net>"
-__url__     = "http://github.com/bmillham/plugin.pictures.icanhascheezburger.com"
-__date__    = "20 August 2010"
-__version__ = "0.4"
 
-#
-# Imports
-#
 import os
 import sys
 
